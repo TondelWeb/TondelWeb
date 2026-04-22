@@ -617,19 +617,67 @@
     max-width: 480px;
     line-height: 1.7;
   }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 960px;
+  }
   .pricing-card {
     background: var(--ink);
     color: var(--white);
-    border-radius: 2px;
+    border-radius: 0;
     padding: 3rem;
-    max-width: 680px;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
   }
   .pricing-card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: var(--accent);
+  }
+  .pricing-card.ads-card::before {
+    background: var(--accent2);
+  }
+  .pricing-card.ads-card .pricing-badge {
+    background: var(--accent2);
+  }
+  .pricing-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 1.5rem 0;
+  }
+  .pricing-setup {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .pricing-spend-box {
+    margin-top: 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.25rem;
+    border-radius: 2px;
+  }
+  .pricing-spend-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.35rem;
+  }
+  .pricing-spend-text {
+    font-size: 0.825rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+  @media (max-width: 680px) {
+    .pricing-grid { grid-template-columns: 1fr; }
   }
   .pricing-badge {
     display: inline-block;
@@ -1516,25 +1564,59 @@
 <!-- PRICING -->
 <section id="pricing">
   <div class="section-label reveal">Pricing</div>
-  <h2 class="reveal reveal-delay-1">Professional websites<br><em>without the agency price tag.</em></h2>
-  <p class="pricing-sub reveal reveal-delay-2">No surprise invoices. No locked-in contracts. Just an honest monthly rate that covers everything your site needs to stay live and looking sharp.</p>
-  <div class="pricing-card reveal reveal-delay-3">
-    <span class="pricing-badge">Most Popular</span>
-    <div class="pricing-amount">$50<span>–$75</span></div>
-    <p class="pricing-period">/ month &nbsp;·&nbsp; everything included</p>
-    <ul class="pricing-features">
-      <li>Custom-designed website built from scratch</li>
-      <li>Mobile-responsive on every device</li>
-      <li>Hosting, domain management & SSL included</li>
-      <li>Ongoing updates and edits — just ask</li>
-      <li>Fast turnaround, direct communication</li>
-      <li>No hidden fees, no surprise bills</li>
-    </ul>
-    <a href="#contact" class="btn-pricing">
-      Get Started
-      <span>→</span>
-    </a>
-    <p class="pricing-note">One-time build fee may apply depending on project scope. Ask for a free quote.</p>
+  <h2 class="reveal reveal-delay-1">Straightforward pricing.<br><em>No surprises.</em></h2>
+  <p class="pricing-sub reveal reveal-delay-2">Pick what you need — a website, Google Ads, or both. Every price is upfront. No contracts, no hidden fees, no agency markup.</p>
+
+  <div class="pricing-grid">
+
+    <!-- Web Design Card -->
+    <div class="pricing-card reveal reveal-delay-2">
+      <span class="pricing-badge">Web Design</span>
+      <div class="pricing-amount">$50<span>–$75</span></div>
+      <p class="pricing-period">/ month &nbsp;·&nbsp; everything included</p>
+      <ul class="pricing-features">
+        <li>Custom-designed website built from scratch</li>
+        <li>Mobile-responsive on every device</li>
+        <li>Hosting, domain management & SSL included</li>
+        <li>Ongoing updates and edits — just ask</li>
+        <li>Fast turnaround, direct communication</li>
+        <li>No hidden fees, no surprise bills</li>
+      </ul>
+      <a href="#contact" class="btn-pricing">
+        Get Started
+        <span>→</span>
+      </a>
+      <p class="pricing-note">One-time build fee may apply depending on project scope. Ask for a free quote.</p>
+    </div>
+
+    <!-- Google Ads Card -->
+    <div class="pricing-card ads-card reveal reveal-delay-3">
+      <span class="pricing-badge">Google Ads</span>
+      <div class="pricing-setup">One-time setup</div>
+      <div class="pricing-amount">$300<span>–$500</span></div>
+      <p class="pricing-period">campaign build &nbsp;·&nbsp; keywords, ads & full config</p>
+      <hr class="pricing-divider">
+      <div class="pricing-setup">Then monthly</div>
+      <div class="pricing-amount" style="font-size: clamp(2rem, 4vw, 3.2rem);">$300<span>–$500</span></div>
+      <p class="pricing-period">/ month &nbsp;·&nbsp; management & optimization</p>
+      <ul class="pricing-features" style="margin-top: 1.25rem;">
+        <li>Campaign monitoring & ongoing optimization</li>
+        <li>Keyword research & negative keyword pruning</li>
+        <li>Ad copy testing to improve click-through rate</li>
+        <li>Monthly performance report — plain English</li>
+        <li>Direct access, no account managers in the way</li>
+      </ul>
+      <div class="pricing-spend-box">
+        <div class="pricing-spend-label">Ad Spend Budget — Paid Directly to Google</div>
+        <div class="pricing-spend-text">Recommend $500–$1,500/mo going to Google. Most clients invest ~$800–$1,000/mo in ad spend, putting total monthly cost at <strong style="color: rgba(255,255,255,0.7);">$1,200–$1,400/mo</strong>. You control the budget — spend more, get more calls.</div>
+      </div>
+      <a href="#contact" class="btn-pricing" style="margin-top: 1.75rem; background: var(--accent2);">
+        Get Started
+        <span>→</span>
+      </a>
+      <p class="pricing-note">Ads go live fast. While your site builds organic rankings over time, Google Ads puts you at the top of search results today — ideal for contractors who need leads now, not in 6 months.</p>
+    </div>
+
   </div>
 </section>
 
